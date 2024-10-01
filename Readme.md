@@ -12,6 +12,8 @@
 
 <b>Relatórios:</b> Geração de relatórios de desempenho de alunos.
 
+<hr>
+
 <b><h1>Objetivo SMART</h1></b>
 
 <b>Específico:</b> Criar um sistema de gerenciamento para autoescolas que centralize as informações de alunos, instrutores e agendamentos.
@@ -23,6 +25,8 @@
 <b>Relevante:</b> O projeto visa aumentar a eficiência da autoescola, reduzindo erros administrativos e melhorando a satisfação dos alunos.
 
 <b>Temporal:</b> O desenvolvimento deverá ser concluído em 4 meses, com entregas parciais a cada 2 semanas.
+
+<hr>
 
 <b><h1>Tecnologias:</h1></b>
 
@@ -37,6 +41,7 @@ Servidor para banco de dados (PostgreSQL)<br>
 Ambiente de desenvolvimento (Visual Studio) <br>
 Ferramentas de versionamento (Git)
 
+<hr>
 <b><h1>Análise de Risco</h1> </b>
 <b>Risco de Escopo:</b> <br>Mudanças nos requisitos podem atrasar o projeto.
 
@@ -57,3 +62,18 @@ Ferramentas de versionamento (Git)
 <b>Risco de Qualidade:</b> <br>Falta de testes adequados pode levar a falhas no sistema.
 
 <b>Mitigação:</b> <br> Incluir testes automatizados e manuais no processo de desenvolvimento.# SomativaJava
+
+<hr>
+
+<b><h2>Diagrama de Classe</h2></b>
+<img src="diagrama_classe.png" alt="diagrama de classe" width="550px" height="500px">
+
+<hr>
+
+<b><h2>Diagrama de Fluxo</h2></b>
+<img src="diagrama_fluxo.jpg" alt="diagrama de fluxo" width="750px" height="400px">
+
+<hr>
+
+<b><h2>Diagrama de uso</h2></b>
+<img src="diagrama_uso.png" alt="diagrama de uso" width="750px" height="400px">
