@@ -76,4 +76,4 @@ Ferramentas de versionamento (Git)
 <hr>
 
 <b><h2>Diagrama de uso</h2></b>
-<img src="diagrama_uso.png" alt="diagrama de uso" width="750px" height="400px">
+<img src="diagrama_uso.jpg" alt="diagrama de uso" width="450px" height="400px">
