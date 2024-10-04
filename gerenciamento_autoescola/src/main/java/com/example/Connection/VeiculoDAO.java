@@ -14,7 +14,7 @@ import java.util.List;
 public class VeiculoDAO {
     private Connection connection;
 
-    private String url = "jdbc:postgresql://localhost:5432/autoescola";
+    private String url = "jdbc:postgresql://localhost:5432/postgres";
     private String user = "postgres";
     private String password = "postgres";
 
@@ -28,7 +28,7 @@ public class VeiculoDAO {
                         "    modelo VARCHAR(255),\n" + //
                         "    ano VARCHAR(4),\n" + //
                         "    placa VARCHAR(10),\n" + //
-                        "    tipo VARCHAR(50)";
+                        "    tipo VARCHAR(50))";
         try (Statement stmt = this.connection.createStatement()) {
             stmt.execute(sql);
             System.out.println("Tabela criada com sucesso.");

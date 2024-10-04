@@ -8,13 +8,13 @@ public class JanelaPrincipal extends JFrame {
         super("Autoescola");
         setDefaultCloseOperation(2);
         JTabbedPane abas = new JTabbedPane();
-        abas.add("Alunos", new JanelaAlunos());
+        abas.add("Alunos", new AlunoView());
         
-        abas.add("Instrutores", new JanelaInstrutores());
+        abas.add("Instrutores", new InstrutorView());
         
-        abas.add("Veiculos", new JanelaVeiculos());
+        // abas.add("Veiculos", new JanelaVeiculos());
 
-        abas.add("Cursos", new JanelaCurso());
+        // abas.add("Cursos", new JanelaCurso());
         this.add(abas);
         setBounds(300, 250, 1400, 600);
         setResizable(false);

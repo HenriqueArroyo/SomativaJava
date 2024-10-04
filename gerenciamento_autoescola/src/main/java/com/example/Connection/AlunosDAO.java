@@ -19,7 +19,7 @@ public class AlunosDAO {
     private Connection connection;
 
 
-    private String url = "jdbc:postgresql://localhost:5432/autoescola";
+    private String url = "jdbc:postgresql://localhost:5432/postgres";
     private String user = "postgres";
     private String password = "postgres";
 
