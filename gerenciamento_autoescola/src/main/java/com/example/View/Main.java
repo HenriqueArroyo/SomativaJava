@@ -8,27 +8,23 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame mainFrame = new JFrame("Gerenciador de Veículos e Cursos");
-            mainFrame.setSize(600, 400);
-            mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            JTabbedPane tabbedPane = new JTabbedPane();
-
-            // Cria e adiciona o painel de Veículos
+            // Cria e exibe a janela de Veículos
             VeiculoView veiculoView = new VeiculoView();
-            tabbedPane.addTab("Veículos", veiculoView);
+            veiculoView.setVisible(true);
+            veiculoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Fecha apenas a janela de veículos
 
-            // Cria e adiciona o painel de Cursos
+            // Cria e exibe a janela de Cursos
             CursoView cursoView = new CursoView();
-            tabbedPane.addTab("Cursos", cursoView);
+            cursoView.setVisible(true);
+            cursoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Fecha apenas a janela de cursos
 
+            AlunoView alunoView = new AlunoView();
+            alunoView.setVisible(true);
+            alunoView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-
-            // Adiciona o JTabbedPane ao frame principal
-            mainFrame.add(tabbedPane);
-            mainFrame.setVisible(true);
+            InstrutorView instrutorView = new InstrutorView();
+            instrutorView.setVisible(true);
+            instrutorView.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         });
     }
 }
-
-
