@@ -37,8 +37,7 @@ public class InstrutorView extends JFrame {
         // Inicializa o JComboBox com as opções
         cmbDisponibilidade = new JComboBox<>(new String[] { "Disponível", "Indisponível" });
 
-        add(new JLabel("ID:"));
-        add(txtId);
+   
         add(new JLabel("Nome:"));
         add(txtNome);
         add(new JLabel("CPF:"));
@@ -47,6 +46,8 @@ public class InstrutorView extends JFrame {
         add(txtTelefone);
         add(new JLabel("Disponibilidade:"));
         add(cmbDisponibilidade); // Adiciona o ComboBox
+        add(new JLabel("ID:"));
+        add(txtId);
 
         JButton btnSave = new JButton("Salvar");
         btnSave.addActionListener(new ActionListener() {
