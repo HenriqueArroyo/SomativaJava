@@ -118,4 +118,29 @@ public class AlunosDAO {
         }
     }
 
+    public Aluno getById(int id) {
+        String sql = "SELECT * FROM alunos WHERE id = ?";
+        Aluno aluno = null;
+    
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                aluno = new Aluno(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("cpf"),
+                    rs.getString("telefone"),
+                    rs.getString("habilitacao")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        return aluno;
+    }
+
 }

@@ -38,4 +38,12 @@ public class AlunoController {
         alunosDAO.delete(id);
         JOptionPane.showMessageDialog(null, "Aluno deletado com sucesso!");
     }
+
+    public Aluno getAlunoById(int id) {
+        Aluno aluno = alunosDAO.getById(id);
+        if (aluno == null) {
+            JOptionPane.showMessageDialog(null, "Aluno não encontrado!");
+        }
+        return aluno;
+    }
 }

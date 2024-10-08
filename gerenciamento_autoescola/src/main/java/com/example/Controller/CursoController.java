@@ -1,7 +1,10 @@
 package com.example.Controller;
 
 import com.example.Connection.CursoDAO;
+import com.example.Model.Aluno;
 import com.example.Model.Curso;
+import com.example.Model.Instrutor;
+import com.example.Model.Veiculo;
 
 import java.util.List;
 
@@ -35,4 +38,16 @@ public class CursoController {
     public void createTable() {
         cursoDAO.criaTabela();
     }
+
+     public List<Aluno> listAlunos() {
+        return cursoDAO.listarAlunos();
+    }
+
+    public List<Instrutor> listInstrutores() {
+        return cursoDAO.listarInstrutores(); //;
+    }
+
+     public List<Veiculo> listVeiculos() {
+       return cursoDAO.listarVeiculos();
+     }
 }

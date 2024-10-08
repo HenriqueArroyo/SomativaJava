@@ -19,7 +19,7 @@ telefone VARCHAR(15),
                             tipo VARCHAR(50));
 
 
-"CREATE TABLE IF NOT EXISTS cursos ( id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS cursos ( id SERIAL PRIMARY KEY,
                            periodo VARCHAR(50),
                             aluno_id INT REFERENCES alunos(id),
                             instrutor_id INT REFERENCES instrutores(id),

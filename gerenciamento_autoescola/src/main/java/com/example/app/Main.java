@@ -1,10 +1,9 @@
 package com.example.app;
 
-import com.example.View.AlunoView;
-
+import com.example.View.LoginScreen;
 
 public class Main {
     public static void main(String[] args) {
-        new     Main();
+        new LoginScreen();
     }
 }

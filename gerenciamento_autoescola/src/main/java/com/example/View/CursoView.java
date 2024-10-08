@@ -13,7 +13,7 @@ public class CursoView extends JFrame {
     private final CursoController controller;
 
     private JTextField idField;
-    private JTextField periodoField;
+    private JComboBox<String> periodoComboBox; // Muda de JTextField para JComboBox
     private JTextField alunoIdField;
     private JTextField instrutorIdField;
     private JTextField veiculoIdField;
@@ -24,7 +24,7 @@ public class CursoView extends JFrame {
     }
 
     private void initUI() {
-        setTitle("Gerenciador de Cursos");
+        setTitle("Gerenciador de Matrículas");
         setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new GridLayout(10, 5));
@@ -34,8 +34,10 @@ public class CursoView extends JFrame {
         add(idField);
 
         add(new JLabel("Período:"));
-        periodoField = new JTextField();
-        add(periodoField);
+        // Inicializa o JComboBox com as opções desejadas
+        String[] periodos = {"Matutino", "Vespertino", "Noturno"};
+        periodoComboBox = new JComboBox<>(periodos);
+        add(periodoComboBox);
 
         add(new JLabel("ID do Aluno:"));
         alunoIdField = new JTextField();
@@ -68,7 +70,7 @@ public class CursoView extends JFrame {
 
     private void clearFields() {
         idField.setText("");
-        periodoField.setText("");
+        periodoComboBox.setSelectedIndex(0); // Reseta para a primeira opção
         alunoIdField.setText("");
         instrutorIdField.setText("");
         veiculoIdField.setText("");
@@ -77,7 +79,7 @@ public class CursoView extends JFrame {
     private class AddButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String periodo = periodoField.getText();
+            String periodo = (String) periodoComboBox.getSelectedItem(); // Obtém o período selecionado
             int alunoId = Integer.parseInt(alunoIdField.getText());
             int instrutorId = Integer.parseInt(instrutorIdField.getText());
             int veiculoId = Integer.parseInt(veiculoIdField.getText());
@@ -92,7 +94,7 @@ public class CursoView extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             int id = Integer.parseInt(idField.getText());
-            String periodo = periodoField.getText();
+            String periodo = (String) periodoComboBox.getSelectedItem(); // Obtém o período selecionado
             int alunoId = Integer.parseInt(alunoIdField.getText());
             int instrutorId = Integer.parseInt(instrutorIdField.getText());
             int veiculoId = Integer.parseInt(veiculoIdField.getText());
@@ -119,7 +121,7 @@ public class CursoView extends JFrame {
             List<Curso> cursos = controller.getAllCursos();
             StringBuilder sb = new StringBuilder("Lista de Cursos:\n");
             for (Curso c : cursos) {
-                sb.append(c.getId()).append(" - ").append(c.getPeriodo()).append("\n");
+                sb.append(c.getId()).append(" - ").append(c.getPeriodo()).append(" - Instrutor: ").append(c.getInstrutor_id()).append("\n");
             }
             JOptionPane.showMessageDialog(null, sb.toString());
         }

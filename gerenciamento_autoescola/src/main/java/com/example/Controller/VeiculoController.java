@@ -35,4 +35,7 @@ public class VeiculoController {
     public void createTable() {
         veiculoDAO.criaTabela();
     }
+
+ 
+    
 }

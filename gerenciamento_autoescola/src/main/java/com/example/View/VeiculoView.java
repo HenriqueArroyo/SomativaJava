@@ -64,6 +64,10 @@ public class VeiculoView extends JFrame {
         JButton listButton = new JButton("Listar Veículos");
         listButton.addActionListener(new ListButtonListener());
         add(listButton);
+
+        JButton searchButton = new JButton("Buscar");
+        searchButton.addActionListener(new SearchButtonListener());
+        add(searchButton);
     }
 
     private void clearFields() {
@@ -125,10 +129,25 @@ public class VeiculoView extends JFrame {
         }
     }
 
+    private class SearchButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int id = Integer.parseInt(idField.getText());
+            Veiculo veiculo = controller.getVeiculoById(id);
+            if (veiculo != null) {
+                modeloField.setText(veiculo.getModelo());
+                anoField.setText(veiculo.getAno());
+                placaField.setText(veiculo.getPlaca());
+                tipoField.setText(veiculo.getTipo());
+            } else {
+                JOptionPane.showMessageDialog(null, "Veículo não encontrado!");
+            }
+        }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             VeiculoView view = new VeiculoView();
             view.setVisible(true);
         });
     }
-}
+    }}

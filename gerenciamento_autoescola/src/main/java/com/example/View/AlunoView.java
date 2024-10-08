@@ -15,7 +15,7 @@ public class AlunoView extends JFrame {
     private JTextField txtNome;
     private JTextField txtCpf;
     private JTextField txtTelefone;
-    private JTextField txtHabilitacao;
+    private JComboBox<String> comboHabilitacao; // ComboBox para habilitação
     private JTextField txtId;
 
     public AlunoView() {
@@ -33,9 +33,11 @@ public class AlunoView extends JFrame {
         txtNome = new JTextField();
         txtCpf = new JTextField();
         txtTelefone = new JTextField();
-        txtHabilitacao = new JTextField();
 
-        
+        // Inicializando o ComboBox com as opções
+        String[] habilitacaoOptions = {"Sem", "A Renovar"};
+        comboHabilitacao = new JComboBox<>(habilitacaoOptions);
+
         add(new JLabel("Nome:"));
         add(txtNome);
         add(new JLabel("CPF:"));
@@ -43,29 +45,47 @@ public class AlunoView extends JFrame {
         add(new JLabel("Telefone:"));
         add(txtTelefone);
         add(new JLabel("Habilitação:"));
-        add(txtHabilitacao);
+        add(comboHabilitacao); // Adicionando o ComboBox
+
+        // Botão para buscar aluno
+        JButton btnBuscar = new JButton("Buscar");
+        btnBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int id = Integer.parseInt(txtId.getText());
+                Aluno aluno = alunoController.getAlunoById(id);
+                if (aluno != null) {
+                    txtNome.setText(aluno.getNome());
+                    txtCpf.setText(aluno.getCpf());
+                    txtTelefone.setText(aluno.getTelefone());
+                    comboHabilitacao.setSelectedItem(aluno.getHabilitacao()); // Seleciona a habilitação correta
+                }
+            }
+        });
+
+        add(new JLabel("ID (Edição/Remoção):"));
+        add(txtId);
+        add(btnBuscar); // Adiciona o botão de busca
 
         JButton btnSave = new JButton("Salvar");
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                alunoController.saveAluno(txtNome.getText(), txtCpf.getText(), txtTelefone.getText(), txtHabilitacao.getText());
+                alunoController.saveAluno(txtNome.getText(), txtCpf.getText(), txtTelefone.getText(), (String) comboHabilitacao.getSelectedItem());
                 clearFields();
             }
         });
-        add(new JLabel("ID (Edição/Remoção):"));
-        add(txtId);
-        
+
         JButton btnUpdate = new JButton("Atualizar");
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int id = Integer.parseInt(txtId.getText());
-                alunoController.updateAluno(id, txtNome.getText(), txtCpf.getText(), txtTelefone.getText(), txtHabilitacao.getText());
+                alunoController.updateAluno(id, txtNome.getText(), txtCpf.getText(), txtTelefone.getText(), (String) comboHabilitacao.getSelectedItem());
                 clearFields();
             }
         });
-        
+
         JButton btnDelete = new JButton("Deletar");
         btnDelete.addActionListener(new ActionListener() {
             @Override
@@ -75,7 +95,7 @@ public class AlunoView extends JFrame {
                 clearFields();
             }
         });
-        
+
         JButton btnList = new JButton("Listar");
         btnList.addActionListener(new ActionListener() {
             @Override
@@ -83,7 +103,7 @@ public class AlunoView extends JFrame {
                 List<Aluno> alunos = alunoController.listAlunos();
                 StringBuilder sb = new StringBuilder();
                 for (Aluno aluno : alunos) {
-                    sb.append("ID: ").append(aluno.getId()).append(", Nome: ").append(aluno.getNome()).append(", Habilitacão: ").append(aluno.getHabilitacao()).append("\n");
+                    sb.append("ID: ").append(aluno.getId()).append(", Nome: ").append(aluno.getNome()).append(", Habilitação: ").append(aluno.getHabilitacao()).append("\n");
                 }
                 JOptionPane.showMessageDialog(null, sb.toString());
             }
@@ -102,7 +122,7 @@ public class AlunoView extends JFrame {
         txtNome.setText("");
         txtCpf.setText("");
         txtTelefone.setText("");
-        txtHabilitacao.setText("");
+        comboHabilitacao.setSelectedIndex(0); // Reseta o ComboBox para a primeira opção
     }
 
     public static void main(String[] args) {

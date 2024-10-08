@@ -77,3 +77,8 @@ Ferramentas de versionamento (Git)
 
 <b><h2>Diagrama de uso</h2></b>
 <img src="diagrama_uso.jpg" alt="diagrama de uso" width="450px" height="400px">
+
+
+<hr>
+
+<h3><a href="/Manual do Usuário.pdf">Manual do Usuario</a> </h3>

@@ -1,6 +1,9 @@
 package com.example.Connection;
 
+import com.example.Model.Aluno;
 import com.example.Model.Curso;
+import com.example.Model.Instrutor;
+import com.example.Model.Veiculo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -135,5 +138,74 @@ public class CursoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+        public List<Aluno> listarAlunos() {
+        String sql = "SELECT * FROM alunos";
+        List<Aluno> alunos = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Aluno aluno = new Aluno(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("cpf"),
+                    rs.getString("telefone"),
+                    rs.getString("habilitacao")
+                );
+                alunos.add(aluno);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return alunos;
+    }
+
+    // Listar veículos
+    public List<Veiculo> listarVeiculos() {
+        String sql = "SELECT * FROM veiculos";
+        List<Veiculo> veiculos = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Veiculo veiculo = new Veiculo(
+                    rs.getInt("id"),
+                    rs.getString("modelo"),
+                    rs.getString("ano"),
+                    rs.getString("placa"),
+                    rs.getString("tipo")
+                );
+                veiculos.add(veiculo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return veiculos;
+    }
+
+    // Listar instrutores
+    public List<Instrutor> listarInstrutores() {
+        String sql = "SELECT * FROM instrutores";
+        List<Instrutor> instrutores = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Instrutor instrutor = new Instrutor(
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("cpf"),
+                    rs.getString("telefone"),
+                    rs.getString("disponibilidade")
+                );
+                instrutores.add(instrutor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return instrutores;
     }
 }
